@@ -8,7 +8,7 @@ export const Home = () => {
 
     const handleConnection = async () => {
         try {
-            const response = await fetch('http://localhost:1992/api/login', {
+            const response = await fetch('http://localhost:1992/users/auth', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ export const Home = () => {
             console.log(data)
             if(data.status === 'success') {
                 navigate('/books')
-                localStorage.setItem('userId', data.userId)
+                localStorage.setItem('userId', login)
             }
             else {
                 alert('Login ou mot de passe incorrect')

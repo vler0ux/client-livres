@@ -15,12 +15,12 @@ export const Books = () => {
         const getBooks = async () => {
             try {
                 const response = await Promise.all([
-                    fetch(`http://localhost:1992/api/user/${userId}/books`),
-                    fetch('http://localhost:1992/api/books')
+                    fetch(`http://localhost:1992/users/${userId}/books`),
+                    fetch('http://localhost:1992/books')
                 ])
                 const data = await Promise.all(response.map(res => res.json()))
-                setBooks(data[1])
-                setUserBookIds(data[0].map((book: any) => book.id))
+                setBooks(data[1].books)
+                setUserBookIds(data[0].books)
             }
             catch(err) {
                 console.log(err)
